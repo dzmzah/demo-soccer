@@ -45,7 +45,8 @@
     text-align:center;padding:6px 14px;position:relative;z-index:30}
 
   /* ── EKRAN 1: dzień meczowy ───────────────────────────────── */
-  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;
+  /* pierwszy ekran mieści się w całości razem z paskiem demo u góry */
+  .hero{position:relative;min-height:calc(100svh - 27px);display:flex;flex-direction:column;
     justify-content:flex-end;overflow:hidden}
   /* żadnego powolnego najazdu na zdjęcie — przy przewijaniu od góry wyglądał jak usterka */
   .hero-foto{position:absolute;inset:0;background:url('foto/ich-01.jpg') 50% 26%/cover no-repeat}
@@ -66,7 +67,7 @@
   .tel-ikona svg{width:17px;height:17px}
 
   /* dolny odstęp większy o wysokość paska akcji — inaczej przyciski chowają się pod nim */
-  .hero-tresc{position:relative;z-index:3;padding:0 18px calc(var(--pas) + 30px)}
+  .hero-tresc{position:relative;z-index:3;padding:0 18px calc(var(--pas) + 22px)}
   .miejsce{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;
     font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--murawa-j)}
   .miejsce::before{content:'';width:22px;height:2px;background:var(--murawa-j)}
