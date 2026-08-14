@@ -133,6 +133,10 @@
   .kropki{display:flex;gap:6px;justify-content:center;margin-top:12px}
   .kropki i{width:22px;height:3px;background:rgba(255,255,255,.22);display:block}
   .kropki i.akt{background:var(--murawa-j)}
+  .cala-ekipa{margin:26px 0 0;position:relative}
+  .cala-ekipa img{width:100%;height:auto}
+  .cala-ekipa figcaption{padding:9px 18px 0;font-family:'Barlow Condensed',sans-serif;font-weight:700;
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--szary)}
   .zawodnik img{width:100%;height:100%;object-fit:cover}
   .zawodnik::after{content:'';position:absolute;inset:0;
     background:linear-gradient(180deg,transparent 45%,rgba(5,7,6,.92) 100%)}
@@ -360,6 +364,13 @@
   </div>
   <div class="kropki"><i class="akt"></i><i></i><i></i></div>
 
+  <!-- zdjęcie ekipy w całości: na pierwszym ekranie kadr jest przycięty (bo telefon jest pionowy),
+       więc tu pokazujemy je w oryginalnych proporcjach, żeby było widać wszystkich -->
+  <figure class="cala-ekipa">
+    <img src="foto/ekipa.jpg" alt="Cała ekipa SOCCER Barbershop Katowice" loading="lazy">
+    <figcaption>Cała ekipa — Al. Korfantego 34</figcaption>
+  </figure>
+
   <div class="wrap">
     <div class="nazwiska">
       <span>Anna</span><span>Anton</span><span>Kamil</span><span>Krystian</span><span>Andriana</span>
@@ -418,7 +429,7 @@
       <div class="praca"><img src="foto/praca-mullet.jpg" alt="Strzyżenie kręconych włosów" loading="lazy"><span>Kręcone</span></div>
       <div class="praca"><img src="foto/praca-dziecko.jpg" alt="Strzyżenie dziecka" loading="lazy"><span>Dzieci</span></div>
       <div class="praca"><img src="foto/ich-10.jpg" alt="Broda i fade" loading="lazy"><span>Broda</span></div>
-      <div class="praca"><img src="foto/ekipa.jpg" alt="Zespół SOCCER Barbershop" loading="lazy"><span>Ekipa</span></div>
+      <div class="praca"><img src="foto/ich-16.jpg" alt="Fade" loading="lazy"><span>Fade</span></div>
     </div>
   </div>
 </section>
