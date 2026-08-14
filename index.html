@@ -49,7 +49,7 @@
   .hero{position:relative;min-height:calc(100svh - 27px);display:flex;flex-direction:column;
     justify-content:flex-end;overflow:hidden}
   /* żadnego powolnego najazdu na zdjęcie — przy przewijaniu od góry wyglądał jak usterka */
-  .hero-foto{position:absolute;inset:0;background:url('foto/ich-01.jpg') 50% 26%/cover no-repeat}
+  .hero-foto{position:absolute;inset:0;background:url('foto/ekipa.jpg') 50% 26%/cover no-repeat}
   .hero-maska{position:absolute;inset:0;
     background:linear-gradient(180deg,rgba(5,7,6,.82) 0,rgba(5,7,6,.05) 34%,rgba(5,7,6,.99) 88%)}
   /* koło środkowe boiska w tle nagłówka */
@@ -115,12 +115,24 @@
   .nad{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;
     letter-spacing:.2em;text-transform:uppercase;color:var(--murawa-j)}
 
-  /* ── SKŁAD: karty zawodników, przesuwane palcem ───────────── */
-  .sklad{display:flex;gap:10px;margin-top:20px;overflow-x:auto;scroll-snap-type:x mandatory;
-    padding:0 18px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  /* ── SKŁAD: po trzech w kadrze, przewijane trójkami ───────── */
+  .karuzela{position:relative;margin-top:20px}
+  .sklad{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding:0 18px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
   .sklad::-webkit-scrollbar{display:none}
-  .zawodnik{flex:0 0 68%;max-width:280px;scroll-snap-align:center;position:relative;
+  .zawodnik{flex:0 0 calc((100% - 52px)/3);scroll-snap-align:start;position:relative;
     aspect-ratio:3/4;overflow:hidden;background:#0f1411}
+  /* strzałki — na telefonie i tak przewija się palcem, ale na monitorze bez nich nikt nie zgadnie */
+  .strzalka{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:42px;height:42px;
+    border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:rgba(5,7,6,.72);
+    backdrop-filter:blur(4px);display:none;place-items:center;cursor:pointer;color:var(--kreda)}
+  .strzalka svg{width:18px;height:18px}
+  .strzalka.lewa{left:8px}
+  .strzalka.prawa{right:8px}
+  .strzalka:disabled{opacity:.25;cursor:default}
+  .kropki{display:flex;gap:6px;justify-content:center;margin-top:12px}
+  .kropki i{width:22px;height:3px;background:rgba(255,255,255,.22);display:block}
+  .kropki i.akt{background:var(--murawa-j)}
   .zawodnik img{width:100%;height:100%;object-fit:cover}
   .zawodnik::after{content:'';position:absolute;inset:0;
     background:linear-gradient(180deg,transparent 45%,rgba(5,7,6,.92) 100%)}
@@ -233,25 +245,20 @@
 
   /* ── DESKTOP: tylko rozszerzenie wersji telefonowej ───────── */
   @media(min-width:820px){
-    /* Zdjęcie zespołu z Booksy ma 1175 px szerokości — rozciągnięte na całą szerokość
-       monitora robiło się miękkie. Dlatego na dużym ekranie hero jest dzielony:
-       tekst po lewej na czerni, zdjęcie po prawej w kolumnie ~50vw, czyli w swojej
-       naturalnej rozdzielczości i ostre. */
-    /* kolumna ze zdjęciem szersza i niższa — proporcja bliższa oryginałowi (16:9),
-       dzięki czemu nikt z ekipy nie wypada poza kadr, a zdjęcie zostaje w swojej rozdzielczości */
-    .hero{display:grid;grid-template-columns:40% 60%;align-items:center;
-      min-height:min(calc(100svh - 27px),780px)}
-    .hero-foto{left:40%;background-position:50% 26%}
-    .hero-maska{left:40%;background:linear-gradient(90deg,rgba(5,7,6,.95) 0,rgba(5,7,6,.12) 28%,rgba(5,7,6,.2) 100%)}
-    .kolo{left:auto;right:6%;top:20%;transform:none;width:38vw;height:38vw}
-    .hero-tresc{grid-column:1;padding:0 0 0 32px;max-width:none;margin:0}
-    .hero-gora{max-width:none;padding:20px 32px}
+    /* zdjęcie ekipy na całą szerokość, tak jak na telefonie — bez dzielenia ekranu */
+    .hero{min-height:calc(100svh - 27px)}
+    .hero-foto{background-position:50% 28%}
+    .hero-maska{background:linear-gradient(180deg,rgba(5,7,6,.72) 0,rgba(5,7,6,.06) 30%,rgba(5,7,6,.97) 92%),
+      linear-gradient(90deg,rgba(5,7,6,.75) 0,rgba(5,7,6,.1) 45%,transparent 70%)}
+    .kolo{width:42vw;height:42vw;top:22%}
+    .hero-tresc{padding:0 32px 46px;max-width:1180px;margin:0 auto;width:100%}
+    .hero-gora{max-width:1180px;margin:0 auto;padding:20px 32px}
 
-    /* skład bez przewijania w bok — na monitorze nikt nie przesuwa palcem */
-    .sklad{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;padding:0 32px;
-      max-width:1180px;margin:20px auto 0;gap:10px}
-    .zawodnik{flex:none;max-width:none}
-    .opinie{overflow-x:auto}
+    /* skład: strzałki zamiast przesuwania palcem, dalej po trzech w kadrze */
+    .karuzela{max-width:1180px;margin:20px auto 0}
+    .sklad{padding:0 32px 6px;gap:10px}
+    .zawodnik{flex:0 0 calc((100% - 84px)/3)}
+    .strzalka{display:grid}
     body{padding-bottom:0}
     .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
     .pasek{display:none}
@@ -334,6 +341,11 @@
     <p class="podpis">Dziewięciu barberów. Rezerwujesz konkretną osobę, nie „kogokolwiek".</p>
   </div>
 
+  <div class="karuzela">
+  <button class="strzalka lewa" aria-label="Poprzedni">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="strzalka prawa" aria-label="Następni">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button>
   <div class="sklad">
     <div class="zawodnik"><img src="foto/ich-05.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">01</span><div class="imie"><span>Barber</span></div></div>
     <div class="zawodnik"><img src="foto/ich-06.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">02</span><div class="imie"><span>Barber</span></div></div>
@@ -345,7 +357,8 @@
     <div class="zawodnik"><img src="foto/ich-04.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">08</span><div class="imie"><span>Barber</span></div></div>
     <div class="zawodnik"><img src="foto/ich-02.jpg" alt="Barberka SOCCER" loading="lazy"><span class="numer">09</span><div class="imie"><span>Barberka</span></div></div>
   </div>
-  <div class="przesun">Przesuń palcem</div>
+  </div>
+  <div class="kropki"><i class="akt"></i><i></i><i></i></div>
 
   <div class="wrap">
     <div class="nazwiska">
@@ -405,7 +418,7 @@
       <div class="praca"><img src="foto/praca-mullet.jpg" alt="Strzyżenie kręconych włosów" loading="lazy"><span>Kręcone</span></div>
       <div class="praca"><img src="foto/praca-dziecko.jpg" alt="Strzyżenie dziecka" loading="lazy"><span>Dzieci</span></div>
       <div class="praca"><img src="foto/ich-10.jpg" alt="Broda i fade" loading="lazy"><span>Broda</span></div>
-      <div class="praca"><img src="foto/ich-01.jpg" alt="Zespół SOCCER Barbershop" loading="lazy"><span>Ekipa</span></div>
+      <div class="praca"><img src="foto/ekipa.jpg" alt="Zespół SOCCER Barbershop" loading="lazy"><span>Ekipa</span></div>
     </div>
   </div>
 </section>
@@ -511,6 +524,27 @@
     var dni = document.querySelectorAll('.dzien')
     var nr = (new Date().getDay() + 6) % 7
     if (dni[nr]) dni[nr].classList.add('dzis')
+
+    // skład: trójkami. Strzałki przewijają o pełną szerokość kadru, kropki pokazują, gdzie jesteśmy
+    var pas = document.querySelector('.sklad')
+    var lewa = document.querySelector('.strzalka.lewa')
+    var prawa = document.querySelector('.strzalka.prawa')
+    var kropki = document.querySelectorAll('.kropki i')
+    if (pas && lewa && prawa) {
+      function krok(){ return pas.clientWidth }
+      lewa.addEventListener('click', function(){ pas.scrollBy({left:-krok(), behavior:'smooth'}) })
+      prawa.addEventListener('click', function(){ pas.scrollBy({left:krok(), behavior:'smooth'}) })
+      function stan(){
+        var maks = pas.scrollWidth - pas.clientWidth
+        lewa.disabled = pas.scrollLeft < 8
+        prawa.disabled = pas.scrollLeft > maks - 8
+        var str = maks > 0 ? Math.round(pas.scrollLeft / krok()) : 0
+        for (var i=0;i<kropki.length;i++) kropki[i].classList.toggle('akt', i === Math.min(str, kropki.length-1))
+      }
+      pas.addEventListener('scroll', stan)
+      window.addEventListener('resize', stan)
+      stan()
+    }
   })()
 </script>
 </body>
