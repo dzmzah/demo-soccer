@@ -92,14 +92,12 @@
   .btn-1:active{background:#25c96a}
   .btn-2{border:1.5px solid rgba(255,255,255,.3)}
 
-  /* kanały na pierwszym ekranie */
-  .social{display:flex;gap:7px;margin-top:10px}
-  .social a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 6px;
-    border:1px solid rgba(255,255,255,.26);background:rgba(5,7,6,.45);backdrop-filter:blur(3px);
-    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.06em;
-    text-transform:uppercase}
+  /* kanały w rogu pierwszego ekranu */
+  .social{display:flex;gap:7px}
+  .social a{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;
+    border:1.5px solid rgba(255,255,255,.32);background:rgba(5,7,6,.4);backdrop-filter:blur(3px)}
   .social a:active{border-color:var(--murawa-j);color:var(--murawa-j)}
-  .social svg{width:15px;height:15px;flex:none}
+  .social svg{width:16px;height:16px}
 
   /* ── PASEK BIEŻĄCY: realna informacja, nie hasła ──────────── */
   .info{background:var(--murawa);padding:13px 18px;display:flex;gap:10px;align-items:flex-start;
@@ -268,9 +266,17 @@
 
   <div class="hero-gora">
     <div class="znak">SOCCER<i>.</i><small>BARBERSHOP KATOWICE</small></div>
-    <a class="tel-ikona" href="tel:+48539626980" aria-label="Zadzwoń">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>
-    </a>
+    <!-- kanały od razu w rogu pierwszego ekranu — tam ich szukają, nie na dole strony -->
+    <div class="social">
+      <a href="https://www.instagram.com/soccer.barbershop.katowice/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+      <a href="https://www.facebook.com/soccer.barber/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M14 9h3V6h-3c-2 0-3 1.2-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14v-1.5c0-.3.2-.5.5-.5H14z"/></svg></a>
+      <a href="https://booksy.com/pl-pl/129351_soccer-barbershop-katowice_barber-shop_11597_katowice" target="_blank" rel="noopener" aria-label="Booksy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></a>
+      <a href="tel:+48539626980" aria-label="Zadzwoń">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg></a>
+    </div>
   </div>
 
   <div class="hero-tresc">
@@ -289,18 +295,6 @@
       <a class="btn btn-2" href="#cennik">Cennik</a>
     </div>
 
-    <!-- kanały od razu na pierwszym ekranie: większość i tak wchodzi najpierw na Instagram -->
-    <div class="social">
-      <a href="https://www.instagram.com/soccer.barbershop.katowice/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
-        Instagram</a>
-      <a href="https://www.facebook.com/soccer.barber/" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M14 9h3V6h-3c-2 0-3 1.2-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14v-1.5c0-.3.2-.5.5-.5H14z"/></svg>
-        Facebook</a>
-      <a href="https://booksy.com/pl-pl/129351_soccer-barbershop-katowice_barber-shop_11597_katowice" target="_blank" rel="noopener" aria-label="Booksy">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
-        Booksy</a>
-    </div>
   </div>
 </header>
 
