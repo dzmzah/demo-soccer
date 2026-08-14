@@ -102,7 +102,9 @@
 
   /* ── WNĘTRZE: jeden duży kadr, bez kafelków ── */
   .wnetrze{position:relative;min-height:74svh;display:flex;align-items:flex-end;overflow:hidden}
-  .wnetrze-foto{position:absolute;inset:0;background:url('foto/ich-11.jpg') center 40%/cover no-repeat}
+  /* kadr przesunięty w lewo: pokazujemy półki, stanowisko i barbera przy pracy,
+     a nie twarz klienta z selfie na środku */
+  .wnetrze-foto{position:absolute;inset:0;background:url('foto/ich-11.jpg') 8% 22%/cover no-repeat}
   .wnetrze-maska{position:absolute;inset:0;
     background:linear-gradient(180deg,rgba(10,11,10,.35) 0,rgba(10,11,10,.2) 45%,rgba(10,11,10,.95) 100%)}
   .wnetrze-in{position:relative;z-index:2;width:100%;padding:0 0 42px}
