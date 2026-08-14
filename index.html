@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SOCCER Barbershop Katowice — projekt strony (demo ZOVU)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  /* paleta z ich lokalu: czarne ściany, sztuczna murawa na ścianie, biały neon w plastrach miodu */
+  :root{
+    --czern:#0a0b0a;
+    --grafit:#121513;
+    --murawa:#1c7a3e;
+    --murawa-j:#35c46a;
+    --kreda:#f4f6f3;
+    --szary:#8b908a;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--czern);color:var(--kreda);font-family:'Inter',system-ui,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+
+  .ziarno{position:fixed;inset:0;z-index:9;pointer-events:none;opacity:.12;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+
+  .demo{position:relative;z-index:20;background:var(--murawa-j);color:#07130b;
+    font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.05em;
+    text-transform:uppercase;text-align:center;padding:7px 16px}
+  .demo span{font-weight:600;opacity:.72}
+
+  .top{position:absolute;top:0;left:0;right:0;z-index:15;display:flex;justify-content:space-between;
+    align-items:center;padding:18px 20px;max-width:1280px;margin:0 auto}
+  .logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;line-height:1}
+  .logo b{color:var(--murawa-j)}
+  .logo small{display:block;font-family:'Inter';font-size:8.5px;letter-spacing:.32em;
+    color:rgba(244,246,243,.55);font-weight:600;margin-top:3px}
+  .tel-gora{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;
+    border:1.5px solid rgba(244,246,243,.32);padding:7px 14px}
+  .tel-gora:hover{border-color:var(--murawa-j);color:var(--murawa-j)}
+
+  /* ── HERO: ich drużyna na tle murawy ── */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero-foto{position:absolute;inset:0;background:url('foto/ich-01.jpg') center 22%/cover no-repeat;
+    transform:scale(1.07);animation:oddech 24s ease-out forwards}
+  @keyframes oddech{to{transform:scale(1)}}
+  .hero-maska{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,11,10,.66) 0,rgba(10,11,10,.1) 38%,rgba(10,11,10,.97) 100%),
+      linear-gradient(90deg,rgba(28,122,62,.3) 0,transparent 58%)}
+  .hero-in{position:relative;z-index:2;width:100%;padding-bottom:38px}
+
+  .metka{display:inline-flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;
+    font-size:13.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--murawa-j);font-weight:700}
+  .metka::before{content:'';width:30px;height:1.5px;background:var(--murawa-j)}
+
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;
+    font-size:clamp(58px,16vw,176px);line-height:.82;letter-spacing:-.02em;margin-top:12px}
+  h1 i{font-style:italic;display:block;color:transparent;-webkit-text-stroke:1.5px var(--murawa-j)}
+  .ocena{display:inline-flex;align-items:center;gap:9px;margin-top:14px;
+    border:1px solid rgba(53,196,106,.5);padding:7px 13px;
+    font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--murawa-j)}
+  .ocena b{font-size:19px;color:var(--kreda)}
+  .hero-dol{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-top:22px}
+  .hero p{max-width:340px;color:#d9ddd7;font-size:15.5px}
+
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:'Barlow Condensed',sans-serif;
+    font-weight:800;font-size:18px;letter-spacing:.05em;text-transform:uppercase;padding:14px 24px;
+    transition:.2s}
+  .btn-1{background:var(--murawa-j);color:#07130b}
+  .btn-1:hover{background:#5ddb8b}
+  .btn-2{border:1.5px solid rgba(244,246,243,.32)}
+  .btn-2:hover{border-color:var(--kreda)}
+
+  /* pasek z realnym faktem, nie przewijana lista haseł */
+  .ogloszenie{background:var(--murawa);position:relative;z-index:2;padding:14px 0}
+  .ogl-w{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .ogl-tresc{display:flex;align-items:flex-start;gap:11px;flex:1;min-width:240px}
+  .ogl-tresc svg{width:22px;height:22px;flex:none;color:#bff3d1;margin-top:1px}
+  .ogl-tresc p{font-size:14.5px;line-height:1.45;color:rgba(244,246,243,.9)}
+  .ogl-tresc b{color:#fff}
+  .ogloszenie .btn{padding:11px 18px;font-size:16px}
+
+  section{padding:64px 0}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;
+    font-size:clamp(36px,8.5vw,74px);line-height:.87;letter-spacing:-.015em;margin-top:10px}
+  h2 em{font-style:italic;color:var(--murawa-j)}
+  .naglowek{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap}
+  .opis{color:var(--szary);max-width:400px;font-size:15px;margin-top:12px}
+
+  /* ── LUDZIE: ich portrety z systemu rezerwacji ── */
+  .ludzie{display:grid;gap:6px;margin-top:28px;grid-template-columns:repeat(3,1fr)}
+  .portret{position:relative;overflow:hidden;aspect-ratio:3/4;background:#151816}
+  .portret img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15) contrast(1.04);
+    transition:transform .8s cubic-bezier(.2,.7,.3,1),filter .4s}
+  .portret:hover img{transform:scale(1.05);filter:none}
+
+  /* ── WNĘTRZE: jeden duży kadr, bez kafelków ── */
+  .wnetrze{position:relative;min-height:74svh;display:flex;align-items:flex-end;overflow:hidden}
+  .wnetrze-foto{position:absolute;inset:0;background:url('foto/ich-11.jpg') center 40%/cover no-repeat}
+  .wnetrze-maska{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,11,10,.35) 0,rgba(10,11,10,.2) 45%,rgba(10,11,10,.95) 100%)}
+  .wnetrze-in{position:relative;z-index:2;width:100%;padding:0 0 42px}
+  .wnetrze h2{max-width:760px}
+
+  /* ── CENNIK ── */
+  .cennik{margin-top:26px}
+  .poz{display:flex;align-items:baseline;gap:12px;padding:14px 0;
+    border-bottom:1px solid rgba(244,246,243,.1)}
+  .poz .n{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:21px;
+    text-transform:uppercase}
+  .poz .kr{flex:1;border-bottom:1px dotted rgba(244,246,243,.22);transform:translateY(-4px);min-width:16px}
+  .poz .t{color:var(--szary);font-size:12.5px;white-space:nowrap}
+  .poz .c{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:24px;
+    color:var(--murawa-j);white-space:nowrap}
+
+  /* ── PRACE ── */
+  .prace{display:grid;gap:8px;margin-top:28px;grid-template-columns:repeat(2,1fr)}
+  .praca{position:relative;overflow:hidden;aspect-ratio:1}
+  .praca img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.3,1)}
+  .praca:hover img{transform:scale(1.05)}
+  .praca span{position:absolute;left:12px;bottom:11px;font-family:'Barlow Condensed',sans-serif;
+    font-size:14px;letter-spacing:.14em;text-transform:uppercase;
+    text-shadow:0 2px 12px rgba(0,0,0,.9)}
+
+  /* ── ZIELONY BLOK: dzieci i tata z synem ── */
+  .zielony{background:var(--murawa);position:relative;z-index:2}
+  .zielony .opis{color:rgba(244,246,243,.8);max-width:540px}
+  .karty{display:grid;gap:10px;margin-top:26px;grid-template-columns:1fr}
+  .karta{border:1px solid rgba(244,246,243,.24);padding:20px;display:flex;gap:16px;align-items:flex-start}
+  .karta b{font-family:'Barlow Condensed',sans-serif;font-size:15px;color:#bff3d1;
+    letter-spacing:.14em;padding-top:3px;white-space:nowrap}
+  .karta h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;
+    font-size:26px;line-height:1}
+  .karta p{color:rgba(244,246,243,.78);font-size:14.5px;margin-top:5px}
+
+  /* ── ZESPÓŁ ── */
+  .zespol{display:grid;gap:8px;margin-top:26px;grid-template-columns:repeat(2,1fr)}
+  .osoba{border:1px solid rgba(244,246,243,.14);padding:18px 16px;transition:.25s}
+  .osoba:hover{border-color:var(--murawa-j);background:rgba(53,196,106,.07)}
+  .osoba b{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:800;
+    text-transform:uppercase;font-size:25px;line-height:1}
+  .osoba span{display:block;margin-top:5px;color:var(--szary);font-size:13px;
+    letter-spacing:.1em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif}
+
+  /* ── OPINIE ── */
+  .karuzela{display:flex;gap:12px;margin-top:26px;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding-bottom:10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .karuzela::-webkit-scrollbar{display:none}
+  .opinia{flex:0 0 285px;scroll-snap-align:start;background:var(--grafit);
+    border:1px solid rgba(244,246,243,.1);padding:22px 20px;display:flex;flex-direction:column}
+  .opinia .gw{color:var(--murawa-j);letter-spacing:3px;font-size:14px}
+  .opinia p{margin-top:12px;font-size:15.5px;line-height:1.6;flex:1}
+  .kto{display:flex;align-items:center;gap:11px;margin-top:18px;
+    border-top:1px solid rgba(244,246,243,.1);padding-top:14px}
+  .ini{width:36px;height:36px;flex:none;border-radius:50%;display:grid;place-items:center;
+    background:var(--murawa);color:#bff3d1;font-family:'Barlow Condensed',sans-serif;
+    font-weight:800;font-size:18px}
+  .kto b{display:block;font-family:'Barlow Condensed',sans-serif;font-size:19px;
+    text-transform:uppercase;line-height:1}
+  .kto i{display:block;font-style:normal;color:var(--szary);font-size:11.5px;
+    letter-spacing:.06em;text-transform:uppercase;margin-top:3px}
+
+  /* ── KANAŁY ── */
+  .kanaly{display:grid;gap:8px;margin-top:26px;grid-template-columns:repeat(2,1fr)}
+  .kanal{display:flex;align-items:center;gap:12px;padding:16px;
+    border:1px solid rgba(244,246,243,.14);transition:.25s}
+  .kanal:hover{border-color:var(--murawa-j);background:rgba(53,196,106,.07)}
+  .kanal svg{width:24px;height:24px;flex:none;color:var(--murawa-j)}
+  .kanal b{display:block;font-family:'Barlow Condensed',sans-serif;font-size:19px;
+    text-transform:uppercase;line-height:1}
+  .kanal span{display:block;color:var(--szary);font-size:12px;margin-top:2px}
+
+  /* ── KONTAKT ── */
+  .kontakt{background:linear-gradient(180deg,#0a0b0a,#101310)}
+  .dane{display:grid;gap:24px;margin-top:26px;grid-template-columns:1fr}
+  .dane h3{font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--murawa-j)}
+  .dane p{margin-top:8px;font-size:17px;line-height:1.6}
+  .godziny{margin-top:8px}
+  .godz{display:flex;justify-content:space-between;padding:7px 0;
+    border-bottom:1px solid rgba(244,246,243,.09);font-size:15px}
+  .godz b{font-weight:600}
+
+  footer{border-top:1px solid rgba(244,246,243,.1);padding:26px 0 34px;color:var(--szary);font-size:13px}
+  footer b{color:var(--kreda)}
+
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;
+    background:var(--murawa-j);color:#07130b;font-family:'Barlow Condensed',sans-serif;
+    font-weight:800;font-size:17px;text-transform:uppercase;letter-spacing:.04em}
+  .sticky a{flex:1;text-align:center;padding:14px 8px}
+  .sticky a+a{border-left:1px solid rgba(7,19,11,.25)}
+
+  .poj{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.3,1)}
+  .poj.jest{opacity:1;transform:none}
+
+  @media(min-width:760px){
+    .ludzie{grid-template-columns:repeat(5,1fr);gap:8px}
+    .prace{grid-template-columns:repeat(4,1fr)}
+    .karty{grid-template-columns:repeat(3,1fr)}
+    .zespol{grid-template-columns:repeat(5,1fr)}
+    .kanaly{grid-template-columns:repeat(4,1fr)}
+    .dane{grid-template-columns:repeat(3,1fr);gap:32px}
+    .sticky{display:none}
+    body{padding-bottom:0}
+    .hero-in{padding-bottom:52px}
+    section{padding:96px 0}
+  }
+  @media(max-width:759px){ body{padding-bottom:52px} }
+</style>
+</head>
+<body>
+<div class="ziarno"></div>
+
+<div class="demo">Projekt strony przygotowany przez ZOVU · <span>to jest wersja pokazowa, nie oficjalna strona salonu</span></div>
+
+<header class="hero">
+  <div class="hero-foto"></div>
+  <div class="hero-maska"></div>
+
+  <div class="top">
+    <div class="logo">SOCCER<b>.</b><small>BARBERSHOP KATOWICE</small></div>
+    <a class="tel-gora" href="tel:+48539626980">539 626 980</a>
+  </div>
+
+  <div class="hero-in">
+    <div class="wrap">
+      <div class="metka">Al. Korfantego 34 · Katowice</div>
+      <h1>Piłkarski<i>barbershop</i></h1>
+      <div class="ocena"><b>5,0</b> · 2 051 opinii na Booksy</div>
+      <div class="hero-dol">
+        <p>Strzyżenie, broda, gorący ręcznik. Dziewięciu barberów, otwarte do 21:00 —
+           także w niedzielę.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-1" href="https://booksy.com/pl-pl/129351_soccer-barbershop-katowice_barber-shop_11597_katowice" target="_blank" rel="noopener">Umów wizytę</a>
+          <a class="btn btn-2" href="#cennik">Cennik</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ogloszenie">
+  <div class="wrap ogl-w">
+    <div class="ogl-tresc">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg>
+      <p><b>Wizyty tylko po wcześniejszej rezerwacji.</b> Pon–sob 9:00–21:00, niedziela 10:00–16:00.
+         Farbowanie brazylijskie — konsultacja przed wizytą jest bezpłatna.</p>
+    </div>
+    <a class="btn btn-1" href="tel:+48539626980">Zadzwoń</a>
+  </div>
+</div>
+
+<section class="poj">
+  <div class="wrap">
+    <div class="naglowek">
+      <div>
+        <div class="metka">Ekipa</div>
+        <h2>Dziewięciu<br><em>barberów</em></h2>
+      </div>
+      <p class="opis">Anna, Anton, Kamil, Krystian, Andriana, Alina, Andrzej, Żenia, Vitalij —
+        u każdego z nich rezerwujesz konkretnie, nie „u kogokolwiek".</p>
+    </div>
+    <div class="ludzie">
+      <div class="portret"><img src="foto/ich-02.jpg" alt="Barber SOCCER Katowice" loading="lazy"></div>
+      <div class="portret"><img src="foto/ich-03.jpg" alt="Barber SOCCER Katowice" loading="lazy"></div>
+      <div class="portret"><img src="foto/ich-04.jpg" alt="Barber SOCCER Katowice" loading="lazy"></div>
+      <div class="portret"><img src="foto/ich-05.jpg" alt="Barber SOCCER Katowice" loading="lazy"></div>
+      <div class="portret"><img src="foto/ich-06.jpg" alt="Barber SOCCER Katowice" loading="lazy"></div>
+      <div class="portret"><img src="foto/ich-07.jpg" alt="Barber SOCCER Katowice" loading="lazy"></div>
+      <div class="portret"><img src="foto/ich-08.jpg" alt="Barber SOCCER Katowice" loading="lazy"></div>
+      <div class="portret"><img src="foto/ich-09.jpg" alt="Barber SOCCER Katowice" loading="lazy"></div>
+      <div class="portret"><img src="foto/ich-10.jpg" alt="Barber SOCCER Katowice" loading="lazy"></div>
+      <div class="portret"><img src="foto/ich-01.jpg" alt="Zespół SOCCER Barbershop" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="wnetrze">
+  <div class="wnetrze-foto"></div>
+  <div class="wnetrze-maska"></div>
+  <div class="wnetrze-in">
+    <div class="wrap">
+      <div class="metka">Lokal</div>
+      <h2>Fotel, ręcznik,<br><em>godzina spokoju</em></h2>
+    </div>
+  </div>
+</section>
+
+<section id="cennik" class="poj">
+  <div class="wrap">
+    <div class="naglowek">
+      <div>
+        <div class="metka">Cennik</div>
+        <h2>Ceny <em>wprost</em></h2>
+      </div>
+      <p class="opis">Ceny prosto z systemu rezerwacji. W każdej usłudze konsultacja,
+        mycie włosów przed i po oraz stylizacja.</p>
+    </div>
+    <div class="cennik">
+      <div class="poz"><span class="n">Strzyżenie męskie</span><span class="kr"></span><span class="t">1 godz.</span><span class="c">95 zł</span></div>
+      <div class="poz"><span class="n">Strzyżenie brody</span><span class="kr"></span><span class="t">45 min · gorący ręcznik</span><span class="c">75 zł</span></div>
+      <div class="poz"><span class="n">Combo — włosy i broda</span><span class="kr"></span><span class="t">1 godz. 30 min</span><span class="c">145 zł</span></div>
+      <div class="poz"><span class="n">Długie włosy (od 2 cm na bokach)</span><span class="kr"></span><span class="t">1 godz. 20 min</span><span class="c">120 zł</span></div>
+      <div class="poz"><span class="n">Strzyżenie dziecka 6–10 lat</span><span class="kr"></span><span class="t">1 godz.</span><span class="c">85 zł</span></div>
+      <div class="poz"><span class="n">Farbowanie brazylijskie</span><span class="kr"></span><span class="t">3 godz. 30 min · od</span><span class="c">400 zł</span></div>
+      <div class="poz"><span class="n">Konsultacja do farbowania</span><span class="kr"></span><span class="t">15 min</span><span class="c">0 zł</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="zielony poj">
+  <div class="wrap">
+    <div class="metka" style="color:#bff3d1">Nie tylko dla dorosłych</div>
+    <h2>Tata i syn<br><em>na jednej wizycie</em></h2>
+    <p class="opis">Dziecko siada w fotelu obok, nie czeka na korytarzu. Wychodzicie obaj ostrzyżeni.</p>
+    <div class="karty">
+      <div class="karta"><b>01</b><div><h3>Tata + syn</h3><p>Dwa strzyżenia jedno po drugim, jedna wizyta w kalendarzu.</p></div></div>
+      <div class="karta"><b>02</b><div><h3>Dzieci 6–10 lat</h3><p>Mycie, strzyżenie maszynką lub nożyczkami, układanie. 85 zł.</p></div></div>
+      <div class="karta"><b>03</b><div><h3>Niedziela do 16:00</h3><p>Jedyny dzień, kiedy da się to zrobić spokojnie, bez urwania z pracy.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="poj">
+  <div class="wrap">
+    <div class="naglowek">
+      <div>
+        <div class="metka">Prace</div>
+        <h2>Z <em>fotela</em></h2>
+      </div>
+      <p class="opis">Zdjęcia klientów z ostatnich wizyt.</p>
+    </div>
+    <div class="prace">
+      <div class="praca"><img src="foto/ich-13.jpg" alt="Strzyżenie kręconych włosów" loading="lazy"><span>Kręcone</span></div>
+      <div class="praca"><img src="foto/ich-15.jpg" alt="Strzyżenie dziecka" loading="lazy"><span>Dzieci</span></div>
+      <div class="praca"><img src="foto/ich-11.jpg" alt="Wnętrze salonu" loading="lazy"><span>Lokal</span></div>
+      <div class="praca"><img src="foto/ich-10.jpg" alt="Broda i fade" loading="lazy"><span>Broda</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="poj">
+  <div class="wrap">
+    <div class="naglowek">
+      <div>
+        <div class="metka">Rezerwacja</div>
+        <h2>U kogo <em>siadasz</em></h2>
+      </div>
+      <p class="opis">Wybierasz barbera po imieniu — tak samo jak w systemie rezerwacji.</p>
+    </div>
+    <div class="zespol">
+      <div class="osoba"><b>Anna</b><span>Barber</span></div>
+      <div class="osoba"><b>Anton</b><span>Barber</span></div>
+      <div class="osoba"><b>Kamil</b><span>Barber</span></div>
+      <div class="osoba"><b>Krystian</b><span>Barber</span></div>
+      <div class="osoba"><b>Andriana</b><span>Barber</span></div>
+      <div class="osoba"><b>Alina</b><span>Barber</span></div>
+      <div class="osoba"><b>Andrzej</b><span>Barber</span></div>
+      <div class="osoba"><b>Żenia</b><span>Barber</span></div>
+      <div class="osoba"><b>Vitalij</b><span>Barber</span></div>
+      <div class="osoba"><b>+ farbowanie</b><span>Konsultacja gratis</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="poj">
+  <div class="wrap">
+    <div class="naglowek">
+      <div>
+        <div class="metka">Opinie</div>
+        <h2>2 051 opinii,<br><em>ocena 5,0</em></h2>
+      </div>
+      <p class="opis">Prosto z Booksy, od potwierdzonych klientów.</p>
+    </div>
+    <div class="karuzela">
+      <div class="opinia"><div class="gw">★★★★★</div>
+        <p>„Pierwszy barber, gdzie nie musiałem opowiadać, co robimy — rzuciłem hasło,
+           a Kamil rozwinął temat perfekcyjnie."</p>
+        <div class="kto"><div class="ini">M</div><div><b>Marek</b><i>Potwierdzony klient</i></div></div></div>
+      <div class="opinia"><div class="gw">★★★★★</div>
+        <p>„Profeska, najlepszy barber w tym mieście."</p>
+        <div class="kto"><div class="ini">A</div><div><b>Adrian</b><i>Strzyżenie u Vitalija</i></div></div></div>
+      <div class="opinia"><div class="gw">★★★★★</div>
+        <p>„Fryzura jak zawsze na najwyższym poziomie."</p>
+        <div class="kto"><div class="ini">A</div><div><b>Anatolii</b><i>Combo u Antona</i></div></div></div>
+      <div class="opinia"><div class="gw">★★★★★</div>
+        <p>„Bardzo dobrze się pracowało z Kamilem i jestem zadowolony z fryzury."</p>
+        <div class="kto"><div class="ini">A</div><div><b>Antoni</b><i>Długie włosy i broda</i></div></div></div>
+      <div class="opinia"><div class="gw">★★★★★</div>
+        <p>„Super obsługa, jestem bardzo zadowolony."</p>
+        <div class="kto"><div class="ini">A</div><div><b>Aleksander</b><i>Strzyżenie u Andriany</i></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="poj">
+  <div class="wrap">
+    <div class="naglowek">
+      <div>
+        <div class="metka">Gdzie jeszcze</div>
+        <h2>Znajdziesz <em>nas</em></h2>
+      </div>
+      <p class="opis">Wszystko w jednym miejscu — rezerwacja, zdjęcia, dojazd.</p>
+    </div>
+    <div class="kanaly">
+      <a class="kanal" href="https://booksy.com/pl-pl/129351_soccer-barbershop-katowice_barber-shop_11597_katowice" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+        <div><b>Booksy</b><span>Rezerwacja online</span></div></a>
+      <a class="kanal" href="https://www.instagram.com/soccer.barbershop.katowice/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        <div><b>Instagram</b><span>@soccer.barbershop.katowice</span></div></a>
+      <a class="kanal" href="https://www.facebook.com/soccer.barber/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 9h3V6h-3c-2 0-3 1.2-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14v-1.5c0-.3.2-.5.5-.5H14z"/></svg>
+        <div><b>Facebook</b><span>SOCCER Barbershop</span></div></a>
+      <a class="kanal" href="https://maps.google.com/?q=Al.+Wojciecha+Korfantego+34,+Katowice" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        <div><b>Dojazd</b><span>Al. Korfantego 34</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="kontakt poj">
+  <div class="wrap">
+    <div class="metka">Kontakt</div>
+    <h2>Wpadnij <em>na fotel</em></h2>
+    <div class="dane">
+      <div>
+        <h3>Adres</h3>
+        <p>Al. Wojciecha Korfantego 34<br>40-161 Katowice</p>
+        <h3 style="margin-top:20px">Telefon</h3>
+        <p><a href="tel:+48539626980">539 626 980</a></p>
+      </div>
+      <div>
+        <h3>Godziny</h3>
+        <div class="godziny">
+          <div class="godz"><b>Poniedziałek – sobota</b><span>9:00 – 21:00</span></div>
+          <div class="godz"><b>Niedziela</b><span>10:00 – 16:00</span></div>
+        </div>
+      </div>
+      <div>
+        <h3>Rezerwacja</h3>
+        <p>Wizyty wyłącznie po wcześniejszej rezerwacji — telefonicznie albo przez Booksy.</p>
+        <a class="btn btn-1" style="margin-top:14px" href="https://booksy.com/pl-pl/129351_soccer-barbershop-katowice_barber-shop_11597_katowice" target="_blank" rel="noopener">Umów wizytę</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>SOCCER Barbershop Katowice</b> · Al. Korfantego 34 · 539 626 980<br>
+    Projekt strony: <b>ZOVU</b> — strony, wideo i social media. zovu.pl · 571 795 097<br>
+    <span style="opacity:.7">Wersja pokazowa. Zdjęcia, ceny i opinie pochodzą z profilu salonu w systemie rezerwacji.</span>
+  </div>
+</footer>
+
+<nav class="sticky">
+  <a href="tel:+48539626980">Zadzwoń</a>
+  <a href="https://booksy.com/pl-pl/129351_soccer-barbershop-katowice_barber-shop_11597_katowice" target="_blank" rel="noopener">Rezerwacja</a>
+</nav>
+
+<script>
+  // pojawianie się sekcji — z siatką bezpieczeństwa: gdyby obserwator nie zadziałał,
+  // po 4 s i tak wszystko widać (raz już się na tym przejechaliśmy)
+  (function(){
+    var el = document.querySelectorAll('.poj')
+    function pokaz(){ el.forEach(function(e){ e.classList.add('jest') }) }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(wpisy){
+        wpisy.forEach(function(w){ if (w.isIntersecting) { w.target.classList.add('jest'); io.unobserve(w.target) } })
+      }, { rootMargin: '0px 0px -8% 0px' })
+      el.forEach(function(e){ io.observe(e) })
+      setTimeout(pokaz, 4000)
+    } else { pokaz() }
+  })()
+</script>
+</body>
+</html>
