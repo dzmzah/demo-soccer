@@ -231,21 +231,31 @@
 
   /* ── DESKTOP: tylko rozszerzenie wersji telefonowej ───────── */
   @media(min-width:820px){
+    /* Zdjęcie zespołu z Booksy ma 1175 px szerokości — rozciągnięte na całą szerokość
+       monitora robiło się miękkie. Dlatego na dużym ekranie hero jest dzielony:
+       tekst po lewej na czerni, zdjęcie po prawej w kolumnie ~50vw, czyli w swojej
+       naturalnej rozdzielczości i ostre. */
+    .hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:calc(100svh - 27px)}
+    .hero-foto{left:50%;background-position:50% 22%}
+    .hero-maska{left:50%;background:linear-gradient(90deg,rgba(5,7,6,.95) 0,rgba(5,7,6,.15) 32%,rgba(5,7,6,.25) 100%)}
+    .kolo{left:auto;right:6%;top:20%;transform:none;width:38vw;height:38vw}
+    .hero-tresc{grid-column:1;padding:0 0 0 32px;max-width:none;margin:0}
+    .hero-gora{max-width:none;padding:20px 32px}
+
+    /* skład bez przewijania w bok — na monitorze nikt nie przesuwa palcem */
+    .sklad{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible;padding:0 32px;
+      max-width:1180px;margin:20px auto 0;gap:8px}
+    .zawodnik{flex:none;max-width:none}
+    .opinie{overflow-x:auto}
     body{padding-bottom:0}
     .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
     .pasek{display:none}
     section{padding:88px 0}
-    .hero-tresc{padding:0 32px 44px;max-width:1180px;margin:0 auto;width:100%}
-    .hero{min-height:calc(100svh - 26px)}
-    .hero-gora{padding:20px 32px;max-width:1180px;margin:0 auto}
-    .kolo{width:44vw;height:44vw;top:26%}
-    h1{font-size:clamp(84px,9vw,140px)}
+    h1{font-size:clamp(70px,6.4vw,110px)}
     .tablica{max-width:520px}
     .hero-btn{max-width:420px}
     .info{justify-content:center}
     .info p{font-size:15px}
-    .sklad{padding:0 32px 8px;max-width:1180px;margin:20px auto 0}
-    .zawodnik{flex:0 0 250px}
     .opinie{padding:0 32px 8px;max-width:1180px;margin:20px auto 0}
     .opinia{flex:0 0 340px}
     .prace{grid-template-columns:repeat(4,1fr);gap:8px}
