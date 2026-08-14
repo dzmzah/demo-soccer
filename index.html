@@ -45,9 +45,9 @@
     text-align:center;padding:6px 14px;position:relative;z-index:30}
 
   /* ── EKRAN 1: dzień meczowy ───────────────────────────────── */
-  .hero{position:relative;min-height:calc(100svh - 26px);display:flex;flex-direction:column;
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;
     justify-content:flex-end;overflow:hidden}
-  .hero-foto{position:absolute;inset:0;background:url('foto/ich-01.jpg') 50% 18%/cover no-repeat;
+  .hero-foto{position:absolute;inset:0;background:url('foto/ich-01.jpg') 50% 26%/cover no-repeat;
     transform:scale(1.06);animation:oddech 20s ease-out forwards}
   @keyframes oddech{to{transform:scale(1)}}
   .hero-maska{position:absolute;inset:0;
@@ -66,7 +66,8 @@
     display:grid;place-items:center}
   .tel-ikona svg{width:17px;height:17px}
 
-  .hero-tresc{position:relative;z-index:3;padding:0 18px 26px}
+  /* dolny odstęp większy o wysokość paska akcji — inaczej przyciski chowają się pod nim */
+  .hero-tresc{position:relative;z-index:3;padding:0 18px calc(var(--pas) + 20px)}
   .miejsce{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;
     font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--murawa-j)}
   .miejsce::before{content:'';width:22px;height:2px;background:var(--murawa-j)}
@@ -222,6 +223,7 @@
     .pasek{display:none}
     section{padding:88px 0}
     .hero-tresc{padding:0 32px 44px;max-width:1180px;margin:0 auto;width:100%}
+    .hero{min-height:calc(100svh - 26px)}
     .hero-gora{padding:20px 32px;max-width:1180px;margin:0 auto}
     .kolo{width:44vw;height:44vw;top:26%}
     h1{font-size:clamp(84px,9vw,140px)}
@@ -243,7 +245,7 @@
 </head>
 <body>
 
-<div class="demo">Projekt strony — ZOVU · wersja pokazowa, nie oficjalna strona salonu</div>
+<div class="demo">Projekt strony — ZOVU · wersja pokazowa</div>
 
 <header class="hero">
   <div class="hero-foto"></div>
