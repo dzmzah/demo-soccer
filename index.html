@@ -123,6 +123,11 @@
   .imie b{display:block;font-family:'Anton',sans-serif;font-size:23px;line-height:1;text-transform:uppercase}
   .imie span{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;
     letter-spacing:.16em;text-transform:uppercase;color:var(--murawa-j);margin-top:3px}
+  /* imiona osobno: Booksy nie łączy zdjęć z nazwiskami, więc nie podpisujemy na ślepo */
+  .nazwiska{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+  .nazwiska span{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;
+    text-transform:uppercase;letter-spacing:.04em;border:1px solid rgba(255,255,255,.2);
+    padding:6px 11px;color:var(--kreda)}
   .przesun{display:flex;align-items:center;gap:7px;padding:0 18px;margin-top:12px;
     font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.14em;
     text-transform:uppercase;color:var(--szary)}
@@ -291,17 +296,26 @@
   </div>
 
   <div class="sklad">
-    <div class="zawodnik"><img src="foto/ich-05.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">01</span><div class="imie"><b>Anton</b><span>Barber</span></div></div>
-    <div class="zawodnik"><img src="foto/ich-06.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">02</span><div class="imie"><b>Kamil</b><span>Barber</span></div></div>
-    <div class="zawodnik"><img src="foto/ich-09.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">03</span><div class="imie"><b>Krystian</b><span>Barber</span></div></div>
-    <div class="zawodnik"><img src="foto/ich-10.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">04</span><div class="imie"><b>Vitalij</b><span>Barber</span></div></div>
-    <div class="zawodnik"><img src="foto/ich-07.jpg" alt="Barberka SOCCER" loading="lazy"><span class="numer">05</span><div class="imie"><b>Andriana</b><span>Barberka</span></div></div>
-    <div class="zawodnik"><img src="foto/ich-03.jpg" alt="Barberka SOCCER" loading="lazy"><span class="numer">06</span><div class="imie"><b>Anna</b><span>Barberka</span></div></div>
-    <div class="zawodnik"><img src="foto/ich-08.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">07</span><div class="imie"><b>Żenia</b><span>Barber</span></div></div>
-    <div class="zawodnik"><img src="foto/ich-04.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">08</span><div class="imie"><b>Andrzej</b><span>Barber</span></div></div>
-    <div class="zawodnik"><img src="foto/ich-02.jpg" alt="Barberka SOCCER" loading="lazy"><span class="numer">09</span><div class="imie"><b>Alina</b><span>Barberka</span></div></div>
+    <div class="zawodnik"><img src="foto/ich-05.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">01</span><div class="imie"><span>Barber</span></div></div>
+    <div class="zawodnik"><img src="foto/ich-06.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">02</span><div class="imie"><span>Barber</span></div></div>
+    <div class="zawodnik"><img src="foto/ich-09.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">03</span><div class="imie"><span>Barber</span></div></div>
+    <div class="zawodnik"><img src="foto/ich-10.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">04</span><div class="imie"><span>Barber</span></div></div>
+    <div class="zawodnik"><img src="foto/ich-07.jpg" alt="Barberka SOCCER" loading="lazy"><span class="numer">05</span><div class="imie"><span>Barberka</span></div></div>
+    <div class="zawodnik"><img src="foto/ich-03.jpg" alt="Barberka SOCCER" loading="lazy"><span class="numer">06</span><div class="imie"><span>Barberka</span></div></div>
+    <div class="zawodnik"><img src="foto/ich-08.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">07</span><div class="imie"><span>Barber</span></div></div>
+    <div class="zawodnik"><img src="foto/ich-04.jpg" alt="Barber SOCCER" loading="lazy"><span class="numer">08</span><div class="imie"><span>Barber</span></div></div>
+    <div class="zawodnik"><img src="foto/ich-02.jpg" alt="Barberka SOCCER" loading="lazy"><span class="numer">09</span><div class="imie"><span>Barberka</span></div></div>
   </div>
   <div class="przesun">Przesuń palcem</div>
+
+  <div class="wrap">
+    <div class="nazwiska">
+      <span>Anna</span><span>Anton</span><span>Kamil</span><span>Krystian</span><span>Andriana</span>
+      <span>Alina</span><span>Andrzej</span><span>Żenia</span><span>Vitalij</span>
+    </div>
+    <p class="podpis" style="margin-top:10px">Imiona podpiszemy przy zdjęciach, jak tylko powiecie, kto jest kto —
+      w systemie rezerwacji nie da się tego odczytać.</p>
+  </div>
 </section>
 
 <section class="lokal">
