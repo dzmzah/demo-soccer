@@ -48,10 +48,13 @@
   /* pierwszy ekran mieści się w całości razem z paskiem demo u góry */
   .hero{position:relative;min-height:calc(100svh - 27px);display:flex;flex-direction:column;
     justify-content:flex-end;overflow:hidden}
-  /* żadnego powolnego najazdu na zdjęcie — przy przewijaniu od góry wyglądał jak usterka */
-  .hero-foto{position:absolute;inset:0;background:url('foto/ich-01.jpg') 50% 26%/cover no-repeat}
-  .hero-maska{position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(5,7,6,.82) 0,rgba(5,7,6,.05) 34%,rgba(5,7,6,.99) 88%)}
+  /* Zdjęcie ekipy jest poziome (16:9), a telefon pionowy — przy kadrze na cały ekran
+     mieściły się cztery osoby z dziewięciu. Dlatego zdjęcie zajmuje górne 62% ekranu:
+     w kadrze jest cała ekipa, a dół zostaje czarny pod nagłówek i przyciski.
+     Żadnego powolnego najazdu — przy przewijaniu od góry wyglądał jak usterka. */
+  .hero-foto{position:absolute;inset:0 0 38% 0;background:url('foto/ich-01.jpg') 50% 32%/cover no-repeat}
+  .hero-maska{position:absolute;inset:0 0 38% 0;
+    background:linear-gradient(180deg,rgba(5,7,6,.72) 0,rgba(5,7,6,.02) 34%,rgba(5,7,6,.98) 97%)}
   /* koło środkowe boiska w tle nagłówka */
   .kolo{position:absolute;left:50%;top:34%;width:78vw;height:78vw;transform:translateX(-50%);
     border:1.5px solid rgba(47,224,122,.22);border-radius:50%;pointer-events:none}
@@ -254,7 +257,8 @@
   @media(min-width:820px){
     /* zdjęcie ekipy na całą szerokość, tak jak na telefonie — bez dzielenia ekranu */
     .hero{min-height:calc(100svh - 27px)}
-    .hero-foto{background-position:50% 28%}
+    .hero-foto{inset:0;background-position:50% 28%}
+    .hero-maska{inset:0}
     .hero-maska{background:linear-gradient(180deg,rgba(5,7,6,.72) 0,rgba(5,7,6,.06) 30%,rgba(5,7,6,.97) 92%),
       linear-gradient(90deg,rgba(5,7,6,.75) 0,rgba(5,7,6,.1) 45%,transparent 70%)}
     .kolo{width:42vw;height:42vw;top:22%}
