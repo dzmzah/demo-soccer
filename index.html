@@ -47,7 +47,7 @@
   /* ── EKRAN 1: dzień meczowy ───────────────────────────────── */
   /* pierwszy ekran mieści się w całości razem z paskiem demo u góry */
   .hero{position:relative;min-height:calc(100svh - 27px);display:flex;flex-direction:column;
-    justify-content:flex-start;overflow:hidden}
+    justify-content:center;overflow:hidden}
   /* Zdjęcie ekipy jest poziome (16:9), a telefon pionowy — przy kadrze na cały ekran
      mieściły się cztery osoby z dziewięciu. Dlatego zdjęcie zajmuje górne 62% ekranu:
      w kadrze jest cała ekipa, a dół zostaje czarny pod nagłówek i przyciski.
@@ -58,7 +58,7 @@
      a rozmyte tło z tego samego kadru wypełnia resztę pionowego ekranu */
   /* zdjęcie leży w normalnym układzie, a nie na sztywnej pozycji — dzięki temu tekst
      zaczyna się od razu pod nim i nie zostaje czarna dziura na środku ekranu */
-  .hero-pelne{position:relative;z-index:2;width:112%;margin:74px -6% 0;
+  .hero-pelne{position:relative;z-index:2;width:112%;margin:0 -6%;
     background:url('foto/ich-01.jpg') 50% 50%/contain no-repeat;aspect-ratio:1175/660}
   .hero-maska{position:absolute;inset:0;z-index:2;
     background:linear-gradient(180deg,rgba(5,7,6,.62) 0,rgba(5,7,6,0) 22%,rgba(5,7,6,0) 46%,rgba(5,7,6,.92) 62%,rgba(5,7,6,.99) 100%)}
@@ -77,7 +77,7 @@
   .tel-ikona svg{width:17px;height:17px}
 
   /* dolny odstęp większy o wysokość paska akcji — inaczej przyciski chowają się pod nim */
-  .hero-tresc{position:relative;z-index:3;padding:18px 18px calc(var(--pas) + 22px);margin-top:auto}
+  .hero-tresc{position:relative;z-index:3;padding:22px 18px calc(var(--pas) + 22px)}
   .miejsce{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;
     font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--murawa-j)}
   .miejsce::before{content:'';width:22px;height:2px;background:var(--murawa-j)}
