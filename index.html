@@ -103,6 +103,13 @@
   .btn-1:active{background:#25c96a}
   .btn-2{border:1.5px solid rgba(255,255,255,.3)}
 
+  /* przełącznik języka — połowa opinii w tym salonie jest po ukraińsku i rosyjsku */
+  .jezyki{display:flex;gap:4px;margin-right:6px}
+  .jezyki button{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12.5px;
+    letter-spacing:.08em;padding:7px 8px;background:rgba(5,7,6,.4);color:rgba(255,255,255,.7);
+    border:1.5px solid rgba(255,255,255,.24);backdrop-filter:blur(3px);cursor:pointer;line-height:1}
+  .jezyki button.akt{color:#04180c;background:var(--murawa-j);border-color:var(--murawa-j)}
+
   /* kanały w rogu pierwszego ekranu */
   .social{display:flex;gap:7px}
   .social a{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;
@@ -320,6 +327,12 @@
 
   <div class="hero-gora">
     <div class="znak">SOCCER<i>.</i><small>BARBERSHOP KATOWICE</small></div>
+    <div style="display:flex;align-items:center">
+    <div class="jezyki">
+      <button data-j="pl" class="akt">PL</button>
+      <button data-j="ua">UA</button>
+      <button data-j="ru">RU</button>
+    </div>
     <!-- kanały od razu w rogu pierwszego ekranu — tam ich szukają, nie na dole strony -->
     <div class="social">
       <a href="https://www.instagram.com/soccer.barbershop.katowice/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -331,22 +344,23 @@
       <a href="tel:+48539626980" aria-label="Zadzwoń">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg></a>
     </div>
+    </div>
   </div>
 
   <div class="hero-tresc">
-    <div class="miejsce">Al. Korfantego 34 · Katowice</div>
-    <h1>Piłkarski<span>barber</span></h1>
+    <div class="miejsce" data-t="adres">Al. Korfantego 34 · Katowice</div>
+    <h1><span data-t="h1a">Piłkarski</span><span data-t="h1b">barber</span></h1>
 
     <div class="tablica">
-      <div class="tab-poz"><b>5,0</b><span>Ocena</span></div>
-      <div class="tab-poz"><b>2051</b><span>Opinii</span></div>
-      <div class="tab-poz"><b>9</b><span>Barberów</span></div>
-      <div class="tab-poz"><b>7/7</b><span>Dni w tyg.</span></div>
+      <div class="tab-poz"><b>5,0</b><span data-t="ocena">Ocena</span></div>
+      <div class="tab-poz"><b>2051</b><span data-t="opinii">Opinii</span></div>
+      <div class="tab-poz"><b>9</b><span data-t="barberow">Barberów</span></div>
+      <div class="tab-poz"><b>7/7</b><span data-t="dni">Dni w tyg.</span></div>
     </div>
 
     <div class="hero-btn">
-      <a class="btn btn-1" href="https://booksy.com/pl-pl/129351_soccer-barbershop-katowice_barber-shop_11597_katowice" target="_blank" rel="noopener">Rezerwuj</a>
-      <a class="btn btn-2" href="#cennik">Cennik</a>
+      <a class="btn btn-1" href="https://booksy.com/pl-pl/129351_soccer-barbershop-katowice_barber-shop_11597_katowice" target="_blank" rel="noopener" data-t="rezerwuj">Rezerwuj</a>
+      <a class="btn btn-2" href="#cennik" data-t="cennik">Cennik</a>
     </div>
 
   </div>
@@ -354,15 +368,14 @@
 
 <div class="info">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg>
-  <p><b>Tylko na wcześniejszą rezerwację.</b> Pon–sob 9:00–21:00, niedziela 10:00–16:00.
-     Konsultacja przed farbowaniem — bezpłatna.</p>
+  <p data-t="info"><b>Tylko na wcześniejszą rezerwację.</b> Pon–sob 9:00–21:00, niedziela 10:00–16:00. Konsultacja przed farbowaniem — bezpłatna.</p>
 </div>
 
 <section class="poj">
   <div class="wrap">
-    <div class="nad">Skład</div>
-    <h2 class="tytul">Wybierasz<br><em>po imieniu</em></h2>
-    <p class="podpis">Dziewięciu barberów. Rezerwujesz konkretną osobę, nie „kogokolwiek".</p>
+    <div class="nad" data-t="nadSklad">Skład</div>
+    <h2 class="tytul" data-t="tytSklad">Wybierasz<br><em>po imieniu</em></h2>
+    <p class="podpis" data-t="podSklad">Dziewięciu barberów. Rezerwujesz konkretną osobę, nie „kogokolwiek".</p>
   </div>
 
   <div class="karuzela">
@@ -388,7 +401,7 @@
        więc tu pokazujemy je w oryginalnych proporcjach, żeby było widać wszystkich -->
   <figure class="cala-ekipa">
     <img src="foto/ich-01.jpg" alt="Cała ekipa SOCCER Barbershop Katowice" loading="lazy">
-    <figcaption>Cała ekipa — Al. Korfantego 34</figcaption>
+    <figcaption data-t="calaEkipa">Cała ekipa — Al. Korfantego 34</figcaption>
   </figure>
 
   <div class="wrap">
@@ -405,46 +418,46 @@
   <div class="lokal-foto"></div>
   <div class="lokal-maska"></div>
   <div class="lokal-tresc">
-    <div class="nad">Szatnia</div>
-    <h2 class="tytul">Fotel, ręcznik,<br><em>godzina spokoju</em></h2>
+    <div class="nad" data-t="nadLokal">Szatnia</div>
+    <h2 class="tytul" data-t="tytLokal">Fotel, ręcznik,<br><em>godzina spokoju</em></h2>
   </div>
 </section>
 
 <section id="cennik" class="poj">
   <div class="wrap">
-    <div class="nad">Cennik</div>
-    <h2 class="tytul">Ceny <em>wprost</em></h2>
-    <p class="podpis">Prosto z systemu rezerwacji. W każdej usłudze konsultacja, mycie przed i po, stylizacja.</p>
+    <div class="nad" data-t="nadCennik">Cennik</div>
+    <h2 class="tytul" data-t="tytCennik">Ceny <em>wprost</em></h2>
+    <p class="podpis" data-t="podCennik">Prosto z systemu rezerwacji. W każdej usłudze konsultacja, mycie przed i po, stylizacja.</p>
 
     <div class="cennik">
-      <div class="poz"><div class="poz-l"><b>Strzyżenie męskie</b><span>maszynka + nożyczki · 1 godz.</span></div><div class="poz-c">95 zł</div></div>
-      <div class="poz"><div class="poz-l"><b>Broda</b><span>trymowanie, golenie, gorący ręcznik · 45 min</span></div><div class="poz-c">75 zł</div></div>
-      <div class="poz"><div class="poz-l"><b>Combo</b><span>włosy i broda · 1 godz. 30 min</span></div><div class="poz-c">145 zł</div></div>
-      <div class="poz"><div class="poz-l"><b>Długie włosy</b><span>od 2 cm na bokach, nożyczkami · 1 godz. 20 min</span></div><div class="poz-c">120 zł</div></div>
-      <div class="poz"><div class="poz-l"><b>Dziecko 6–10 lat</b><span>mycie, strzyżenie, układanie · 1 godz.</span></div><div class="poz-c">85 zł</div></div>
-      <div class="poz"><div class="poz-l"><b>Farbowanie brazylijskie</b><span>od 12 lat · 3 godz. 30 min</span></div><div class="poz-c">400 zł</div></div>
-      <div class="poz darmo"><div class="poz-l"><b>Konsultacja do farbowania</b><span>15 min, przed umówieniem wizyty</span></div><div class="poz-c">Gratis</div></div>
+      <div class="poz"><div class="poz-l"><b data-t="u1">Strzyżenie męskie</b><span data-t="u1o">maszynka + nożyczki · 1 godz.</span></div><div class="poz-c">95 zł</div></div>
+      <div class="poz"><div class="poz-l"><b data-t="u2">Broda</b><span data-t="u2o">trymowanie, golenie, gorący ręcznik · 45 min</span></div><div class="poz-c">75 zł</div></div>
+      <div class="poz"><div class="poz-l"><b data-t="u3">Combo</b><span data-t="u3o">włosy i broda · 1 godz. 30 min</span></div><div class="poz-c">145 zł</div></div>
+      <div class="poz"><div class="poz-l"><b data-t="u4">Długie włosy</b><span data-t="u4o">od 2 cm na bokach, nożyczkami · 1 godz. 20 min</span></div><div class="poz-c">120 zł</div></div>
+      <div class="poz"><div class="poz-l"><b data-t="u5">Dziecko 6–10 lat</b><span data-t="u5o">mycie, strzyżenie, układanie · 1 godz.</span></div><div class="poz-c">85 zł</div></div>
+      <div class="poz"><div class="poz-l"><b data-t="u6">Farbowanie brazylijskie</b><span data-t="u6o">od 12 lat · 3 godz. 30 min</span></div><div class="poz-c">400 zł</div></div>
+      <div class="poz darmo"><div class="poz-l"><b data-t="u7">Konsultacja do farbowania</b><span data-t="u7o">15 min, przed umówieniem wizyty</span></div><div class="poz-c" data-t="gratis">Gratis</div></div>
     </div>
   </div>
 </section>
 
 <section class="duet poj">
   <div class="wrap">
-    <div class="nad">Dwa fotele</div>
-    <h2 class="tytul">Tata i syn<br>na <em>jednej wizycie</em></h2>
-    <p class="podpis">Dziecko nie czeka na korytarzu — siada obok. Wychodzicie obaj ostrzyżeni.</p>
+    <div class="nad" data-t="nadDuet">Dwa fotele</div>
+    <h2 class="tytul" data-t="tytDuet">Tata i syn<br>na <em>jednej wizycie</em></h2>
+    <p class="podpis" data-t="podDuet">Dziecko nie czeka na korytarzu — siada obok. Wychodzicie obaj ostrzyżeni.</p>
     <div class="kroki">
-      <div class="krok"><b>01</b><div><h3>Tata + syn</h3><p>Dwa strzyżenia po sobie, jedna wizyta w kalendarzu.</p></div></div>
-      <div class="krok"><b>02</b><div><h3>Dzieci 6–10 lat</h3><p>Mycie, strzyżenie, układanie. 85 zł.</p></div></div>
-      <div class="krok"><b>03</b><div><h3>Niedziela do 16:00</h3><p>Jedyny dzień, kiedy nie trzeba urywać się z pracy.</p></div></div>
+      <div class="krok"><b>01</b><div><h3 data-t="k1">Tata + syn</h3><p data-t="k1o">Dwa strzyżenia po sobie, jedna wizyta w kalendarzu.</p></div></div>
+      <div class="krok"><b>02</b><div><h3 data-t="k2">Dzieci 6–10 lat</h3><p data-t="k2o">Mycie, strzyżenie, układanie. 85 zł.</p></div></div>
+      <div class="krok"><b>03</b><div><h3 data-t="k3">Niedziela do 16:00</h3><p data-t="k3o">Jedyny dzień, kiedy nie trzeba urywać się z pracy.</p></div></div>
     </div>
   </div>
 </section>
 
 <section class="poj">
   <div class="wrap">
-    <div class="nad">Z fotela</div>
-    <h2 class="tytul">Ostatnie <em>wizyty</em></h2>
+    <div class="nad" data-t="nadPrace">Z fotela</div>
+    <h2 class="tytul" data-t="tytPrace">Ostatnie <em>wizyty</em></h2>
     <div class="prace">
       <div class="praca"><img src="foto/praca-mullet.jpg" alt="Strzyżenie kręconych włosów" loading="lazy"><span>Kręcone</span></div>
       <div class="praca"><img src="foto/praca-dziecko.jpg" alt="Strzyżenie dziecka" loading="lazy"><span>Dzieci</span></div>
@@ -456,9 +469,9 @@
 
 <section class="poj">
   <div class="wrap">
-    <div class="nad">Trybuny</div>
-    <h2 class="tytul">2051 opinii,<br>ocena <em>5,0</em></h2>
-    <p class="podpis">Od potwierdzonych klientów, prosto z systemu rezerwacji.</p>
+    <div class="nad" data-t="nadOpinie">Trybuny</div>
+    <h2 class="tytul" data-t="tytOpinie">2051 opinii,<br>ocena <em>5,0</em></h2>
+    <p class="podpis" data-t="podOpinie">Od potwierdzonych klientów, prosto z systemu rezerwacji.</p>
   </div>
   <div class="opinie">
     <div class="opinia"><div class="gw">★★★★★</div>
@@ -477,21 +490,21 @@
       <p>„Super obsługa, jestem bardzo zadowolony."</p>
       <div class="kto"><div class="ini">A</div><div><b>Aleksander</b><i>Strzyżenie u Andriany</i></div></div></div>
   </div>
-  <div class="przesun">Przesuń palcem</div>
+  <div class="przesun" data-t="przesun">Przesuń palcem</div>
 </section>
 
 <section class="poj">
   <div class="wrap">
-    <div class="nad">Terminarz</div>
-    <h2 class="tytul">Kiedy <em>otwarte</em></h2>
+    <div class="nad" data-t="nadGodziny">Terminarz</div>
+    <h2 class="tytul" data-t="tytGodziny">Kiedy <em>otwarte</em></h2>
     <div class="terminarz">
-      <div class="dzien"><b>Poniedziałek</b><span>9:00 – 21:00</span></div>
-      <div class="dzien"><b>Wtorek</b><span>9:00 – 21:00</span></div>
-      <div class="dzien"><b>Środa</b><span>9:00 – 21:00</span></div>
-      <div class="dzien"><b>Czwartek</b><span>9:00 – 21:00</span></div>
-      <div class="dzien"><b>Piątek</b><span>9:00 – 21:00</span></div>
-      <div class="dzien"><b>Sobota</b><span>9:00 – 21:00</span></div>
-      <div class="dzien"><b>Niedziela</b><span>10:00 – 16:00</span></div>
+      <div class="dzien"><b data-t="d1">Poniedziałek</b><span>9:00 – 21:00</span></div>
+      <div class="dzien"><b data-t="d2">Wtorek</b><span>9:00 – 21:00</span></div>
+      <div class="dzien"><b data-t="d3">Środa</b><span>9:00 – 21:00</span></div>
+      <div class="dzien"><b data-t="d4">Czwartek</b><span>9:00 – 21:00</span></div>
+      <div class="dzien"><b data-t="d5">Piątek</b><span>9:00 – 21:00</span></div>
+      <div class="dzien"><b data-t="d6">Sobota</b><span>9:00 – 21:00</span></div>
+      <div class="dzien"><b data-t="d7">Niedziela</b><span>10:00 – 16:00</span></div>
     </div>
 
     <div class="adres">
@@ -502,16 +515,16 @@
     <div class="kanaly">
       <a class="kanal" href="https://booksy.com/pl-pl/129351_soccer-barbershop-katowice_barber-shop_11597_katowice" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
-        <div><b>Booksy</b><span>Rezerwacja</span></div></a>
+        <div><b>Booksy</b><span data-t="kanRez">Rezerwacja</span></div></a>
       <a class="kanal" href="https://www.instagram.com/soccer.barbershop.katowice/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
-        <div><b>Instagram</b><span>Codziennie</span></div></a>
+        <div><b>Instagram</b><span data-t="kanIg">Codziennie</span></div></a>
       <a class="kanal" href="https://www.facebook.com/soccer.barber/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M14 9h3V6h-3c-2 0-3 1.2-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14v-1.5c0-.3.2-.5.5-.5H14z"/></svg>
-        <div><b>Facebook</b><span>Aktualności</span></div></a>
+        <div><b>Facebook</b><span data-t="kanFb">Aktualności</span></div></a>
       <a class="kanal" href="https://maps.google.com/?q=Al.+Wojciecha+Korfantego+34,+Katowice" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
-        <div><b>Dojazd</b><span>Korfantego 34</span></div></a>
+        <div><b data-t="dojazd">Dojazd</b><span>Korfantego 34</span></div></a>
     </div>
   </div>
 </section>
@@ -555,6 +568,95 @@
     var dni = document.querySelectorAll('.dzien')
     var nr = (new Date().getDay() + 6) % 7
     if (dni[nr]) dni[nr].classList.add('dzis')
+
+    // ── JĘZYKI ─────────────────────────────────────────────────────────────
+    // Opinie w tym salonie są po polsku, ukraińsku i rosyjsku — klient trafia na stronę
+    // w swoim języku i nie musi się domyślać. Cytaty klientów zostają w oryginale.
+    var slowa = {
+      ua: {
+        adres:'Ал. Корфантего 34 · Катовіце', h1a:'Футбольний', h1b:'барбер',
+        ocena:'Оцінка', opinii:'Відгуків', barberow:'Барберів', dni:'Днів на тиж.',
+        rezerwuj:'Записатися', cennik:'Ціни',
+        info:'<b>Тільки за попереднім записом.</b> Пн–сб 9:00–21:00, неділя 10:00–16:00. Консультація перед фарбуванням — безкоштовна.',
+        nadSklad:'Склад', tytSklad:'Обираєш<br><em>по імені</em>',
+        podSklad:'Дев’ять барберів. Записуєшся до конкретної людини, а не «до будь-кого».',
+        calaEkipa:'Уся команда — ал. Корфантего 34', przesun:'Гортай пальцем',
+        nadLokal:'Роздягальня', tytLokal:'Крісло, рушник,<br><em>година спокою</em>',
+        nadCennik:'Ціни', tytCennik:'Ціни <em>прямо</em>',
+        podCennik:'Прямо з системи запису. У кожній послузі консультація, миття до і після, укладка.',
+        u1:'Чоловіча стрижка', u1o:'машинка + ножиці · 1 год',
+        u2:'Борода', u2o:'тримінг, гоління, гарячий рушник · 45 хв',
+        u3:'Комбо', u3o:'волосся і борода · 1 год 30 хв',
+        u4:'Довге волосся', u4o:'від 2 см на боках, ножицями · 1 год 20 хв',
+        u5:'Дитина 6–10 років', u5o:'миття, стрижка, укладка · 1 год',
+        u6:'Бразильське фарбування', u6o:'від 12 років · 3 год 30 хв',
+        u7:'Консультація перед фарбуванням', u7o:'15 хв, перед записом', gratis:'Безкоштовно',
+        nadDuet:'Два крісла', tytDuet:'Тато і син<br>за <em>один візит</em>',
+        podDuet:'Дитина не чекає в коридорі — сідає поруч. Виходите обидва підстрижені.',
+        k1:'Тато + син', k1o:'Дві стрижки поспіль, один запис у календарі.',
+        k2:'Діти 6–10 років', k2o:'Миття, стрижка, укладка. 85 zł.',
+        k3:'Неділя до 16:00', k3o:'Єдиний день, коли не треба зриватися з роботи.',
+        nadPrace:'З крісла', tytPrace:'Останні <em>візити</em>',
+        nadOpinie:'Трибуни', tytOpinie:'2051 відгук,<br>оцінка <em>5,0</em>',
+        podOpinie:'Від підтверджених клієнтів, прямо з системи запису.',
+        nadGodziny:'Розклад', tytGodziny:'Коли <em>відчинено</em>',
+        d1:'Понеділок', d2:'Вівторок', d3:'Середа', d4:'Четвер', d5:'П’ятниця', d6:'Субота', d7:'Неділя',
+        kanRez:'Запис', kanIg:'Щодня', kanFb:'Новини', dojazd:'Як дістатися'
+      },
+      ru: {
+        adres:'Ал. Корфантего 34 · Катовице', h1a:'Футбольный', h1b:'барбер',
+        ocena:'Оценка', opinii:'Отзывов', barberow:'Барберов', dni:'Дней в нед.',
+        rezerwuj:'Записаться', cennik:'Цены',
+        info:'<b>Только по предварительной записи.</b> Пн–сб 9:00–21:00, воскресенье 10:00–16:00. Консультация перед окрашиванием — бесплатно.',
+        nadSklad:'Состав', tytSklad:'Выбираешь<br><em>по имени</em>',
+        podSklad:'Девять барберов. Записываешься к конкретному человеку, а не «к кому-нибудь».',
+        calaEkipa:'Вся команда — ал. Корфантего 34', przesun:'Листай пальцем',
+        nadLokal:'Раздевалка', tytLokal:'Кресло, полотенце,<br><em>час покоя</em>',
+        nadCennik:'Цены', tytCennik:'Цены <em>прямо</em>',
+        podCennik:'Прямо из системы записи. В каждой услуге консультация, мытьё до и после, укладка.',
+        u1:'Мужская стрижка', u1o:'машинка + ножницы · 1 час',
+        u2:'Борода', u2o:'тримминг, бритьё, горячее полотенце · 45 мин',
+        u3:'Комбо', u3o:'волосы и борода · 1 час 30 мин',
+        u4:'Длинные волосы', u4o:'от 2 см на висках, ножницами · 1 час 20 мин',
+        u5:'Ребёнок 6–10 лет', u5o:'мытьё, стрижка, укладка · 1 час',
+        u6:'Бразильское окрашивание', u6o:'от 12 лет · 3 часа 30 мин',
+        u7:'Консультация перед окрашиванием', u7o:'15 мин, до записи', gratis:'Бесплатно',
+        nadDuet:'Два кресла', tytDuet:'Отец и сын<br>за <em>один визит</em>',
+        podDuet:'Ребёнок не ждёт в коридоре — садится рядом. Выходите оба подстриженные.',
+        k1:'Отец + сын', k1o:'Две стрижки подряд, одна запись в календаре.',
+        k2:'Дети 6–10 лет', k2o:'Мытьё, стрижка, укладка. 85 zł.',
+        k3:'Воскресенье до 16:00', k3o:'Единственный день, когда не надо срываться с работы.',
+        nadPrace:'Из кресла', tytPrace:'Последние <em>визиты</em>',
+        nadOpinie:'Трибуны', tytOpinie:'2051 отзыв,<br>оценка <em>5,0</em>',
+        podOpinie:'От подтверждённых клиентов, прямо из системы записи.',
+        nadGodziny:'Расписание', tytGodziny:'Когда <em>открыто</em>',
+        d1:'Понедельник', d2:'Вторник', d3:'Среда', d4:'Четверг', d5:'Пятница', d6:'Суббота', d7:'Воскресенье',
+        kanRez:'Запись', kanIg:'Каждый день', kanFb:'Новости', dojazd:'Как добраться'
+      }
+    }
+
+    var poPolsku = {}
+    document.querySelectorAll('[data-t]').forEach(function(e){ poPolsku[e.dataset.t] = e.innerHTML })
+
+    function jezyk(kod){
+      var zestaw = kod === 'pl' ? poPolsku : slowa[kod]
+      document.querySelectorAll('[data-t]').forEach(function(e){
+        var tekst = zestaw[e.dataset.t]
+        if (tekst) e.innerHTML = tekst
+      })
+      document.documentElement.lang = kod === 'ua' ? 'uk' : kod
+      document.querySelectorAll('.jezyki button').forEach(function(b){
+        b.classList.toggle('akt', b.dataset.j === kod)
+      })
+      try { localStorage.setItem('jezyk', kod) } catch(e){}
+    }
+    document.querySelectorAll('.jezyki button').forEach(function(b){
+      b.addEventListener('click', function(){ jezyk(b.dataset.j) })
+    })
+    try {
+      var zapisany = localStorage.getItem('jezyk')
+      if (zapisany && zapisany !== 'pl') jezyk(zapisany)
+    } catch(e){}
 
     // skład: trójkami. Strzałki przewijają o pełną szerokość kadru, kropki pokazują, gdzie jesteśmy
     var pas = document.querySelector('.sklad')
