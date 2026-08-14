@@ -49,7 +49,7 @@
   .hero{position:relative;min-height:calc(100svh - 27px);display:flex;flex-direction:column;
     justify-content:flex-end;overflow:hidden}
   /* żadnego powolnego najazdu na zdjęcie — przy przewijaniu od góry wyglądał jak usterka */
-  .hero-foto{position:absolute;inset:0;background:url('foto/ekipa.jpg') 50% 26%/cover no-repeat}
+  .hero-foto{position:absolute;inset:0;background:url('foto/ich-01.jpg') 50% 26%/cover no-repeat}
   .hero-maska{position:absolute;inset:0;
     background:linear-gradient(180deg,rgba(5,7,6,.82) 0,rgba(5,7,6,.05) 34%,rgba(5,7,6,.99) 88%)}
   /* koło środkowe boiska w tle nagłówka */
@@ -135,7 +135,8 @@
   .kropki{display:flex;gap:6px;justify-content:center;margin-top:12px}
   .kropki i{width:22px;height:3px;background:rgba(255,255,255,.22);display:block}
   .kropki i.akt{background:var(--murawa-j)}
-  .cala-ekipa{margin:26px 0 0;position:relative}
+  /* zdjęcie ekipy ma 1175 px, więc nie pozwalamy mu urosnąć ponad własną rozdzielczość */
+  .cala-ekipa{margin:26px auto 0;position:relative;max-width:1175px}
   .cala-ekipa img{width:100%;height:auto}
   .cala-ekipa figcaption{padding:9px 18px 0;font-family:'Barlow Condensed',sans-serif;font-weight:700;
     font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--szary)}
@@ -369,7 +370,7 @@
   <!-- zdjęcie ekipy w całości: na pierwszym ekranie kadr jest przycięty (bo telefon jest pionowy),
        więc tu pokazujemy je w oryginalnych proporcjach, żeby było widać wszystkich -->
   <figure class="cala-ekipa">
-    <img src="foto/ekipa.jpg" alt="Cała ekipa SOCCER Barbershop Katowice" loading="lazy">
+    <img src="foto/ich-01.jpg" alt="Cała ekipa SOCCER Barbershop Katowice" loading="lazy">
     <figcaption>Cała ekipa — Al. Korfantego 34</figcaption>
   </figure>
 
