@@ -257,6 +257,12 @@
     .info{justify-content:center}
     .info p{font-size:15px}
     .opinie{padding:0 32px 8px;max-width:1180px;margin:20px auto 0}
+    /* na szerokim ekranie kadr uciekamy w lewo (półki, stanowisko) i mocniej przyciemniamy,
+       żeby nagłówek nie leżał na jasnym suficie */
+    .lokal-foto{background-position:0% 34%}
+    .lokal-maska{background:linear-gradient(90deg,rgba(5,7,6,.88) 0,rgba(5,7,6,.25) 46%,transparent 100%),
+      linear-gradient(180deg,rgba(5,7,6,.5) 0,transparent 35%,rgba(5,7,6,.9) 100%)}
+    .lokal-tresc{padding:0 32px 44px;max-width:1180px;margin:0 auto}
     .opinia{flex:0 0 340px}
     .prace{grid-template-columns:repeat(4,1fr);gap:8px}
     .kanaly{grid-template-columns:repeat(4,1fr);gap:8px}
