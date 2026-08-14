@@ -120,7 +120,9 @@
   .sklad{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;
     padding:0 18px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
   .sklad::-webkit-scrollbar{display:none}
-  .zawodnik{flex:0 0 calc((100% - 52px)/3);scroll-snap-align:start;position:relative;
+  /* na telefonie trzy zdjęcia obok siebie dają znaczki wielkości paznokcia,
+     więc tu jedno duże z zapowiedzią następnego; po trzy pokazujemy na monitorze */
+  .zawodnik{flex:0 0 68%;max-width:290px;scroll-snap-align:center;position:relative;
     aspect-ratio:3/4;overflow:hidden;background:#0f1411}
   /* strzałki — na telefonie i tak przewija się palcem, ale na monitorze bez nich nikt nie zgadnie */
   .strzalka{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:42px;height:42px;
@@ -261,7 +263,7 @@
     /* skład: strzałki zamiast przesuwania palcem, dalej po trzech w kadrze */
     .karuzela{max-width:1180px;margin:20px auto 0}
     .sklad{padding:0 32px 6px;gap:10px}
-    .zawodnik{flex:0 0 calc((100% - 84px)/3)}
+    .zawodnik{flex:0 0 calc((100% - 84px)/3);max-width:none}
     .strzalka{display:grid}
     body{padding-bottom:0}
     .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
