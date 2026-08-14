@@ -81,7 +81,7 @@
   .miejsce{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;
     font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--murawa-j)}
   .miejsce::before{content:'';width:22px;height:2px;background:var(--murawa-j)}
-  h1{font-family:'Anton',sans-serif;font-size:clamp(46px,14vw,86px);line-height:.86;
+  h1{font-family:'Anton',sans-serif;font-size:clamp(34px,11.2vw,86px);line-height:.86;
     text-transform:uppercase;margin-top:10px;letter-spacing:-.01em}
   h1 span{display:block}
   h1 span+span{color:transparent;-webkit-text-stroke:1.6px var(--murawa-j)}
@@ -542,13 +542,13 @@
 <nav class="pasek">
   <a href="tel:+48539626980">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>
-    Zadzwoń</a>
+    <span data-t="pasZadzwon">Zadzwoń</span></a>
   <a class="waski" href="https://www.instagram.com/soccer.barbershop.katowice/" target="_blank" rel="noopener" aria-label="Instagram">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
   </a>
   <a href="https://booksy.com/pl-pl/129351_soccer-barbershop-katowice_barber-shop_11597_katowice" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
-    Rezerwuj</a>
+    <span data-t="pasRezerwuj">Rezerwuj</span></a>
 </nav>
 
 <script>
@@ -602,7 +602,8 @@
         podOpinie:'Від підтверджених клієнтів, прямо з системи запису.',
         nadGodziny:'Розклад', tytGodziny:'Коли <em>відчинено</em>',
         d1:'Понеділок', d2:'Вівторок', d3:'Середа', d4:'Четвер', d5:'П’ятниця', d6:'Субота', d7:'Неділя',
-        kanRez:'Запис', kanIg:'Щодня', kanFb:'Новини', dojazd:'Як дістатися'
+        kanRez:'Запис', kanIg:'Щодня', kanFb:'Новини', dojazd:'Як дістатися',
+        pasZadzwon:'Подзвонити', pasRezerwuj:'Записатися'
       },
       ru: {
         adres:'Ал. Корфантего 34 · Катовице', h1a:'Футбольный', h1b:'барбер',
@@ -632,7 +633,8 @@
         podOpinie:'От подтверждённых клиентов, прямо из системы записи.',
         nadGodziny:'Расписание', tytGodziny:'Когда <em>открыто</em>',
         d1:'Понедельник', d2:'Вторник', d3:'Среда', d4:'Четверг', d5:'Пятница', d6:'Суббота', d7:'Воскресенье',
-        kanRez:'Запись', kanIg:'Каждый день', kanFb:'Новости', dojazd:'Как добраться'
+        kanRez:'Запись', kanIg:'Каждый день', kanFb:'Новости', dojazd:'Как добраться',
+        pasZadzwon:'Позвонить', pasRezerwuj:'Записаться'
       }
     }
 
