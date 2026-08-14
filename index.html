@@ -237,16 +237,19 @@
        monitora robiło się miękkie. Dlatego na dużym ekranie hero jest dzielony:
        tekst po lewej na czerni, zdjęcie po prawej w kolumnie ~50vw, czyli w swojej
        naturalnej rozdzielczości i ostre. */
-    .hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:calc(100svh - 27px)}
-    .hero-foto{left:50%;background-position:50% 22%}
-    .hero-maska{left:50%;background:linear-gradient(90deg,rgba(5,7,6,.95) 0,rgba(5,7,6,.15) 32%,rgba(5,7,6,.25) 100%)}
+    /* kolumna ze zdjęciem szersza i niższa — proporcja bliższa oryginałowi (16:9),
+       dzięki czemu nikt z ekipy nie wypada poza kadr, a zdjęcie zostaje w swojej rozdzielczości */
+    .hero{display:grid;grid-template-columns:40% 60%;align-items:center;
+      min-height:min(calc(100svh - 27px),780px)}
+    .hero-foto{left:40%;background-position:50% 26%}
+    .hero-maska{left:40%;background:linear-gradient(90deg,rgba(5,7,6,.95) 0,rgba(5,7,6,.12) 28%,rgba(5,7,6,.2) 100%)}
     .kolo{left:auto;right:6%;top:20%;transform:none;width:38vw;height:38vw}
     .hero-tresc{grid-column:1;padding:0 0 0 32px;max-width:none;margin:0}
     .hero-gora{max-width:none;padding:20px 32px}
 
     /* skład bez przewijania w bok — na monitorze nikt nie przesuwa palcem */
-    .sklad{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible;padding:0 32px;
-      max-width:1180px;margin:20px auto 0;gap:8px}
+    .sklad{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;padding:0 32px;
+      max-width:1180px;margin:20px auto 0;gap:10px}
     .zawodnik{flex:none;max-width:none}
     .opinie{overflow-x:auto}
     body{padding-bottom:0}
@@ -399,8 +402,8 @@
     <div class="nad">Z fotela</div>
     <h2 class="tytul">Ostatnie <em>wizyty</em></h2>
     <div class="prace">
-      <div class="praca"><img src="foto/ich-13.jpg" alt="Strzyżenie kręconych włosów" loading="lazy"><span>Kręcone</span></div>
-      <div class="praca"><img src="foto/ich-15.jpg" alt="Strzyżenie dziecka" loading="lazy"><span>Dzieci</span></div>
+      <div class="praca"><img src="foto/praca-mullet.jpg" alt="Strzyżenie kręconych włosów" loading="lazy"><span>Kręcone</span></div>
+      <div class="praca"><img src="foto/praca-dziecko.jpg" alt="Strzyżenie dziecka" loading="lazy"><span>Dzieci</span></div>
       <div class="praca"><img src="foto/ich-10.jpg" alt="Broda i fade" loading="lazy"><span>Broda</span></div>
       <div class="praca"><img src="foto/ich-01.jpg" alt="Zespół SOCCER Barbershop" loading="lazy"><span>Ekipa</span></div>
     </div>
